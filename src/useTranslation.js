@@ -45,7 +45,8 @@ export function useTranslation(ns, props = {}) {
       t: i18n.getFixedT(null, i18nOptions.nsMode === 'fallback' ? namespaces : namespaces[0]),
     };
   }
-  const [t, setT] = useState(getT()); // seems we can't have functions as value -> wrap it in obj
+  const t = getT(); // seems we can't have functions as value -> wrap it in obj
+/*   const [t, setT] = useState(getT()); // seems we can't have functions as value -> wrap it in obj
 
   useEffect(() => {
     let isMounted = true;
@@ -75,6 +76,7 @@ export function useTranslation(ns, props = {}) {
         bindI18nStore.split(' ').forEach(e => i18n.store.off(e, boundReset));
     };
   }, [namespaces.join()]); // re-run effect whenever list of namespaces changes
+*/
 
   const ret = [t.t, i18n, ready];
   ret.t = t.t;
